@@ -1,90 +1,136 @@
 #include <stdio.h>
 
-#define MAXQ 3
+#define MAXQ 7
 
-typedef struct stack {
-    int A[MAXQ] ;
-    int top;
-} stack ;
+int stack[MAXQ] ;
+int topA ;
+int topB ;
 
 // Prototypes
 
 
-void inserts( stack* , int);
-int deletes( stack* );
-void displays( stack);
-void initialize( stack* );
+void insertA( int);
+int deleteA();
+void displayA();
+void insertB(int);
+int deleteB();
+void displayB();
+void initialize();
 
 
 int main(){
 
-    stack s ;
     int ch , n ;
-    initialize(&s);
+    initialize();
 
     do{
-        printf("1. Push \n");
-        printf("2. Pop \n");
-        printf("3. Display \n");
-        printf("4. End \n");
+        printf("1. Push in A \n");
+        printf("2. Push in B\n");
+        printf("3. Pop in A\n");
+        printf("4. Pop in B\n");
+        printf("5. Display A\n");
+        printf("6. Display B\n");
+        printf("7. End \n");
 
         scanf("%d" , &ch );
 
         switch(ch) {
             case 1 :
-            printf("Enter Value to Insert : ");
-            scanf("%d" , &n);
-            inserts(&s , n);
-            break;
+                printf("Enter Value to Insert : ");
+                scanf("%d" , &n);
+                insertA(n);
+                break;
             case 2 :
-            n = deletes(&s);
-            if(n == -1) break;
-            printf("Deleted Value : %d\n" , n );
-            break;
+                printf("Enter Value to Insert : ");
+                scanf("%d" , &n);
+                insertB(n);
+                break;
             case 3 :
-            displays(s);
-            break;
+                n = deleteA();
+                if(n == -1) break;
+                printf("Deleted Value : %d\n" , n );
+                break;
+            case 4 :
+                n = deleteB();
+                if(n == -1) break;
+                printf("Deleted Value : %d\n" , n );
+                break;
+            case 5 :
+                displayA();
+                break ;
+            case 6 :
+                displayB();
+                break;
         }
 
     } while ( ch != 4) ;    
 }
 
-void initialize(stack *S){
-    S->top = -1;
+void initialize(){
+    topA = -1 ;
+    topB = MAXQ ;
 }
 
-void inserts( stack *S , int x ){
+void insertA( int x ){
 
-    if( S->top == MAXQ -1 ){
+    if( topA + 1 == topB ){
         printf("stack is Full \n ");
         return;
     }
-    S->A[++S->top] = x ;
+    stack[++topA] = x ;
+        
+}
+void insertB( int x ){
+
+    if( topA + 1 == topB ){
+        printf("stack is Full \n ");
+        return;
+    }
+    stack[--topB] = x ;
         
 }
 
-int deletes( stack *S ){
+int deleteA(){
 
     int x ;
 
-    if( S->top == -1 ){
+    if( topA == -1 ){
         printf("Stack is Empty \n");
         return(-1);
     }
 
-    x = S->A[S->top--] ;
+    x =stack[topA--] ;
+    return(x);
+
+}
+int deleteB(){
+
+    int x ;
+
+    if( topB == MAXQ ){
+        printf("Stack is Empty \n");
+        return(-1);
+    }
+
+    x = stack[topB++] ;
     return(x);
 
 }
 
-void displays( stack S ){
+void displayB(){
 
-    for( int i = S.top ; i >= 0 ; i--){
-        printf("%d " , S.A[i] );
+    for( int i = topB ; i < MAXQ ; i++){
+        printf("%d " , stack[i] );
     }
-
-    printf("\n");
-   
+    printf("\n"); 
+}
     
+
+void displayA(){
+
+    for( int i = topA ; i >= 0 ; i--){
+        printf("%d " , stack[i] );
+    }
+    printf("\n"); 
 }
     
