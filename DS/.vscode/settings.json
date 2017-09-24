@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "array": "c",
+        "system_error": "c",
+        "type_traits": "c",
+        "stdio.h": "c"
     }
 }

@@ -14,7 +14,7 @@ class Test {
             cout << "Obj No : " << code  << endl;
         }
         static void showcount(){
-            cout << "Object Count " << count << endl ;
+            cout << "Object Count : " << count << endl ;
         }
 };
 
@@ -36,5 +36,4 @@ int main (){
     T3.showcode();    
 
     return 0;
-
 }

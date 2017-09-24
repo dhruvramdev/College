@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   body,table tr{background-color:#fff}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}hr,pre code{background:0 0}body{font:16px Helvetica,Arial,sans-serif;line-height:1.4;color:#333;word-wrap:break-word;padding:10px 15px}strong,table tr th{font-weight:700}h1{font-size:2em;margin:.67em 0;text-align:center}h2{font-size:1.75em}h3{font-size:1.5em}h4{font-size:1.25em}h1,h2,h3,h4,h5,h6{font-weight:700;position:relative;margin-top:15px;margin-bottom:15px;line-height:1.1}h1,h2{border-bottom:1px solid #eee}hr{height:0;margin:15px 0;overflow:hidden;border:0;border-bottom:1px solid #ddd}a{color:#4183C4}a.absent{color:#c00}ol,ul{padding-left:15px;margin-left:5px}ol{list-style-type:lower-roman}table tr{border-top:1px solid #ccc;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}img{max-width:100%}blockquote{padding:0 15px;border-left:4px solid #ccc}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h4 id="aim">
+   Aim:
+  </h4>
+  <p>
+   To understand the concept of
+   <strong>
+    Function Overloading
+   </strong>
+   with the help of on example to compute the area of recatangle . triangle and circle
+  </p>
+  <h4 id="theory">
+   Theory:
+  </h4>
+  <p>
+   Function overloading (also method overloading) is a programming concept that allows programmers to define two or more functions with the same name and in the same scope.
+  </p>
+  <p>
+   Each function has a unique signature (or header), which is derived from:
+  </p>
+  <ul>
+   <li>
+    function/procedure name
+   </li>
+   <li>
+    number of arguments
+   </li>
+   <li>
+    arguments’ type
+   </li>
+   <li>
+    arguments’ order
+   </li>
+  </ul>
+  <p>
+   Since functions’ names are in this case the same, we must preserve uniqueness of signatures, by changing something from the parameter list (last three alienees). If the functions’ signatures are sufficiently different, the compiler can distinguish which function was intended to be used at each occurrence. This process of searching for the appropriate function is called function resolution and can be quite an intensive one, especially if there are a lot of equally named functions. Programming languages supporting implicit type conventions usually use promotion of arguments (i.e. type casting of integer to floating-point) when there is no exact function match. The demotion of arguments is rarely used. When two or more functions match the criteria in function resolution process, an ambiguity error is reported by compiler. Adding more information for the compiler by editing the source code (using for example type casting), can address such doubts.
+  </p>
+  <h4 id="syntax">
+   Syntax :
+  </h4>
+  <pre><code class="cpp">int test() { }
+int test(int a) { }
+float test(double a) { }
+int test(int a, double b) { }
+</code></pre>
+  <h4 id="code">
+   Code :
+  </h4>
+  <pre><code class="cpp">#include &lt;iostream&gt; 
+#include &lt;math.h&gt;
+using namespace::std ;
+
+
+float area( int a , int b , int c ) {
+    float s = (a+b+c)/2.0 ;
+    return sqrt(s*(s-a)*(s-b)*(s-c)) ;
+}
+
+float area(int l , int b){
+    return l * b ;
+}
+
+float area( int radius) {
+    return 3.14 * radius * radius ;
+}
+
+int main () {
+
+    cout &lt;&lt; area(5,12,13) &lt;&lt; endl ;
+    cout &lt;&lt; area(1,2) &lt;&lt; endl ;
+    cout &lt;&lt; area(1) &lt;&lt; endl ;
+
+}
+</code></pre>
+  <h4 id="output">
+   Output :
+  </h4>
+  <p>
+   <img alt="" src="./function-overloading.png"/>
+  </p>
+  <h4 id="discussion">
+   Discussion :
+  </h4>
+  <p>
+   The above program illustrates the concept of function overloading where the function
+   <code>
+    area
+   </code>
+   is overloaded  to find the area of a triangle, rectangle or circle depeding upon the number of arguments given to it.
+   <br/>
+   The area of triangle s calculated using Heron’s Formula. Each
+   <code>
+    area
+   </code>
+   function has a unique singnature which helps the complier to resolve which function to call.
+  </p>
+  <h4 id="learing-outcomes">
+   Learing Outcomes :
+  </h4>
+  <ul>
+   <li>
+    Function Overloading enables consistency in the naming of methods / functions which logically perform very similar tasks, and differ slightly in by accepting different parameters. This allows the same method name to be reused across multiple implementations.
+   </li>
+   <li>
+    Consistency in notation, which is good both for reading and for writing code
+   </li>
+  </ul>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>
