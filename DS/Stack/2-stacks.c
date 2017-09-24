@@ -63,7 +63,7 @@ int main(){
                 break;
         }
 
-    } while ( ch != 4) ;    
+    } while ( ch != 7) ;    
 }
 
 void initialize(){
