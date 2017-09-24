@@ -40,7 +40,7 @@ int main(){
             case 2 :
             n = deleteq(&q);
             if(n == -1) break;
-            printf("Deleted Value : %d \n" , n );
+            printf("Deleted Value : %d" , n );
             break;
             case 3 :
             displayq(q);
@@ -57,33 +57,39 @@ void initialize(queue *Q){
 
 void insertq( queue *Q , int x ){
 
-    if( Q->rear == MAXQ ){
+    if( (Q->rear+1)%MAXQ == Q->front ){
         printf("Queue is Full \n ");
         return;
     }
     
-    Q->A[Q->rear++] = x ;        
+    Q->A[Q->rear] = x ;
+    Q->rear = (Q->rear+1)%MAXQ ;
+        
 }
 
 int deleteq( queue *Q ){
 
     int x ;
 
-    if( Q->front == Q->rear ){
+    if( Q->rear == Q->front ){
         printf("Queue is Empty \n ");
         return(-1);
     }
     
-    x = Q->A[Q->front++] ;
+    x = Q->A[Q->front] ;
+    Q->front = (Q->front+1)%MAXQ ;
     return(x);
 
 }
 
 void displayq( queue Q ){
     
-    for(int i = Q.front ; i < Q.rear ; i++ ){
-        printf("%d " , Q.A[i]);
-    }  
+    while( Q.front != Q.rear ){
+
+        printf("%d " , Q.A[Q.front]);
+        Q.front = (Q.front + 1)%MAXQ ; 
+
+    }    
     
     printf("\n");
     
