@@ -10,6 +10,8 @@ node* getnewnode() ;
 node* insertbeg( node* , int);
 void displayll( node* );
 node* reverse( node* );
+int middle( node* );
+int middle2( node* );
 
 int main(){
     
@@ -18,8 +20,9 @@ int main(){
     
     printf("1. Insert Beginning \n");
     printf("2. Display \n");
-    printf("3. Reverse \n");
-    printf("4. End \n");
+    printf("3. Middle \n");
+    printf("4. Reverse \n");
+    printf("5. End \n");
 
     do{
         printf("Enter Choice : ");        
@@ -35,11 +38,14 @@ int main(){
                 displayll(start);
                 break;
             case 3 :
+                temp = middle2(start);
+                printf("%d\n" , temp );
+            case 4 :
                 start = reverse(start);
                 break;
         }
         
-    } while ( ch != 4) ;    
+    } while ( ch != 5) ;    
     
 }
 
@@ -99,4 +105,42 @@ node* reverse(node* start){
     return start ;
 
 
+}
+
+int length( node* start ){
+    int j = 0 ;   
+    node* p = start ;
+    while( p != NULL ){
+        p = p->next ;
+        j++ ;
+    }
+    return j ;
+}
+
+int middle( node* start){
+
+    node * p = start ;
+    int len = length(start) ;
+
+    int j = 0 ;
+
+    while( j < len/2  ){
+        p = p->next ;
+        j++ ; 
+    }
+
+    return p->value ;
+
+}
+
+int middle2(node* start){
+    node *p , *q ;
+    p = start ;
+    q = start ;
+    while(p->next != NULL ){
+        p = p->next->next ;
+        q = q->next ;
+    }
+
+    return q->value ;
 }
