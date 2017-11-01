@@ -19,7 +19,7 @@ class Employee {
 
     void havedata() {
         cout << "Enter Name : " ;
-        cin.getline(name , 50 , '\n' ) ;
+        cin >> name ;
 
         cout << "Enter EmpNo : " ;
         cin >> empno ;  
@@ -45,11 +45,20 @@ class Employee {
 
 int main () {
 
-    Employee emp ;
+    int n ;
+    cout << "Enter Number of Employees : " ;
+    cin >> n ;
+
+    Employee emp[n] ;
+
+    int i = 0 ;
+    while(i < n) {
+
+        cout << "##### Employee " << i+1 << " ######" << endl ;
+        emp[i].havedata() ;
+        emp[i++].displaydata() ;
+
+    }
     
-    emp.havedata() ;
-    emp.displaydata() ;
-
-
     return 0 ;
 }

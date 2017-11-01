@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="http://www.texts.io/">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.min.css"/>
+<link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/black.css" id="theme">
+<link rel="stylesheet" media="print" href="http://lab.hakim.se/reveal-js/css/print/pdf.css" />
+<!--[if lt IE 9]>
+<script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+<![endif]-->
+<script src="http://lab.hakim.se/reveal-js/js/reveal.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section class="slide level2">
+
+<h4>Aim:</h4>
+<p>To understand the concept of <strong>Static Members</strong> with the help of on example. #### Theory: A static member is shared by all objects of the class. When we declare a member of a class as static it means no matter how many objects of the class are created, there is only one copy of the static member. All static data is initialized to zero when the first object is created, if no other initialization is present. We can't put it in the class definition but it can be initialized outside the class as done in the following example by redeclaring the static variable, using the scope resolution operator <code>::</code> to identify which class it belongs to. By declaring a function member as static, you make it independent of any particular object of the class. A static member function can be called even if no objects of the class exist and the static functions are accessed using only the class name and the scope resolution operator <code>::</code>. A static member function can only access static data member, other static member functions and any other functions from outside the class.</p>
+<h4>Syntax :</h4>
+<pre><code>class A {
+    static int a ; 
+    public :
+        static void test(){ }
+};
+
+// Using Static Members
+
+A::a ;
+A::test() ;</code></pre>
+<h4>Code :</h4>
+<pre><code>#include &lt;iostream&gt;
+
+using namespace std;
+
+class Test {
+    int code ;
+    static int count ;
+    
+    public :
+        void setcode(){
+            code = ++count ;
+        }
+        void showcode(){
+            cout &lt;&lt; &quot;Obj No : &quot; &lt;&lt; code  &lt;&lt; endl;
+        }
+        static void showcount(){
+            cout &lt;&lt; &quot;Object Count : &quot; &lt;&lt; count &lt;&lt; endl ;
+        }
+};
+
+int Test::count ;
+
+int main (){
+    Test T1, T2 ;
+    T1.setcode() ;
+    T2.setcode() ;
+
+    Test::showcount() ;
+
+    Test T3 ;
+    T3.setcode() ;
+
+    Test::showcount() ;
+    T1.showcode();
+    T2.showcode();
+    T3.showcode();
+
+    return 0;
+}</code></pre>
+<h4>Output :</h4>
+<figure>
+<img src="./static-function.png" />
+</figure>
+<h4>DIscussion :</h4>
+<p>The above program illustrates the concept of static members. The static member <code>count</code> of class <code>Test</code> is declared as static and is used to store the number of objects created. A static member function <code>showcount()</code> is used to display that count and is called using the class name.</p>
+<h4>Learing Outcomes :</h4>
+<ul>
+<li><p>It eliminates the need for an object as the members can be accessed using class.</p></li>
+<li><p>Static Data Members can be Encapsulated. A static member can be a private member,but a global variable cannot.</p></li>
+<li><p>It acts as way to interact between different objects of the same class.</p></li>
+</ul>
+</section>
+</div>
+</div>
+<script>
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({ controls: true, history: true, transition: 'linear' });
+</script>
+</body>
+</html>

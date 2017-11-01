@@ -23,14 +23,14 @@ int main(){
     queue q ;
     int ch , n ;
     initialize(&q);
+    printf("1. Insert \n");
+    printf("2. Delete \n");
+    printf("3. Display \n");
+    printf("4. End \n");
 
     do{
-        printf("1. Insert \n");
-        printf("2. Delete \n");
-        printf("3. Display \n");
-        printf("4. End \n");
 
-        printf("Choice : ");
+        printf("Enter Choice : ");
         scanf("%d" , &ch );
 
         switch(ch) {

@@ -24,13 +24,16 @@ int main(){
 
     printf("\n");
     
+    printf("P1 = ") ;
     displayPoly(P1 , S1) ;
+    printf("P2 = ") ;  
     displayPoly(P2 , S2) ;
     
-    addPoly(P1 , P2 , P3 , S1 ,S2 , &S3) ;
-    
+    printf("P1 + P2 = ");
+    addPoly(P1 , P2 , P3 , S1 ,S2 , &S3) ;    
     displayPoly(P3 , S3) ;
 
+    printf("P1 * P2 = ");
     mulPoly(P1 , P2 , P4 , S1 ,S2 , &S4) ;    
     displayPoly(P4 , S4) ;
     

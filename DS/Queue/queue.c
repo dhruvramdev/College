@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MAXQ 5
+#define MAXQ 2
 
 typedef struct queue {
 
@@ -9,8 +9,6 @@ typedef struct queue {
 } queue ;
 
 // Prototypes
-
-
 void insertq( queue* , int);
 int deleteq( queue* );
 void displayq( queue);
@@ -23,12 +21,14 @@ int main(){
     int ch , n ;
     initialize(&q);
 
-    do{
-        printf("1. Insert \n");
-        printf("2. Delete \n");
-        printf("3. Display \n");
-        printf("4. End \n");
+    printf("1. Insert \n");
+    printf("2. Delete \n");
+    printf("3. Display \n");
+    printf("4. End \n");
 
+    do{
+        
+        printf("Enter Choice : ");
         scanf("%d" , &ch );
 
         switch(ch) {
@@ -58,7 +58,7 @@ void initialize(queue *Q){
 void insertq( queue *Q , int x ){
 
     if( Q->rear == MAXQ ){
-        printf("Queue is Full \n ");
+        printf("Queue is Full \n");
         return;
     }
     
@@ -70,7 +70,7 @@ int deleteq( queue *Q ){
     int x ;
 
     if( Q->front == Q->rear ){
-        printf("Queue is Empty \n ");
+        printf("Queue is Empty \n");
         return(-1);
     }
     
@@ -81,6 +81,7 @@ int deleteq( queue *Q ){
 
 void displayq( queue Q ){
     
+    printf("Queue -> ");
     for(int i = Q.front ; i < Q.rear ; i++ ){
         printf("%d " , Q.A[i]);
     }  

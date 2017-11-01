@@ -26,14 +26,15 @@ int main(){
     stack s  ;
     int ch , n ;
     initialize(&s);
+    printf("1. Push \n");
+    printf("2. Pop \n");
+    printf("3. Display \n");
+    printf("4. Peek \n");
+    printf("5. End \n");
+
 
     do{
-        printf("1. Push \n");
-        printf("2. Pop \n");
-        printf("3. Display \n");
-        printf("4. Peek \n");
-        printf("5. End \n");
-
+        printf("Enter the choice : ");
         scanf("%d" , &ch );
 
         switch(ch) {

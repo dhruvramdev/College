@@ -66,11 +66,11 @@ int main(){
                 start  = insertbefore(start , n , temp);
                 break;
             case 5 :
-                printf("Deleting From Start");
+                printf("Deleting From Start\n");
                 start = deletebeg(start);
                 break;
             case 6 :
-                printf("Deleting From End");
+                printf("Deleting From End\n");
                 start = deleteend(start);
                 break;
             case 7 :
@@ -285,8 +285,7 @@ node* deleteafter( node* start  , int x){
     node* q ;
     
     if( start->value == x ){
-        q = start ;
-        start = start->next ;
+        start->next = start->next->next ;
         return start ;
     }
     
@@ -331,7 +330,6 @@ node* sortll(node* start){
         return start ;
     }
 
-
     p = start ;
     while(p->next != NULL ){
         
@@ -339,7 +337,7 @@ node* sortll(node* start){
 
         while( q != NULL ){
 
-            displayll(start);
+            // displayll(start);
 
             if ( p->value > q->value ){
 
@@ -354,8 +352,5 @@ node* sortll(node* start){
 
         p = p->next ;
     }
-
     return start ;
-
-
 }

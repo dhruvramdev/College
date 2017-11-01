@@ -1,18 +1,29 @@
-#include <iostream>
-
-using namespace::std ;
+#include <stdio.h>
 
 int merge(int a[] , int b[], int c[] , int lena , int lenb);
 
 int main() {
     int c[20];
-    int a[] = {1,2,3,4,5,6,7,8,9,10};
-    int b[] = {2,5,6,6,7,8,11,12 , 12,13};
+    int a[] = {1,2,3,7,9,};
+    int b[] = {2,4,5,6,8,};
 
-    merge(a,b ,c, 10 ,10);
+    merge(a,b ,c, 5 ,5);
 
-    for(int i = 0 ; i < 20 ; i++){
-        cout<<c[i]<<endl;
+    printf("1st Array : ");
+    for(int i = 0 ; i < 5 ; i++){
+        printf("%d " , a[i]) ;
+    }
+    printf("\n");    
+
+    printf("2nd Array : ");    
+    for(int i = 0 ; i < 5 ; i++){
+        printf("%d " , b[i]) ;
+    }
+    printf("\n");
+
+    printf("Merged Array : ");
+    for(int i = 0 ; i < 10 ; i++){
+        printf("%d " , c[i]) ;
     }
 
 

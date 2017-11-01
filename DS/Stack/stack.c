@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MAXQ 3
+#define MAXQ 2
 
 typedef struct stack {
 
@@ -23,12 +23,14 @@ int main(){
     int ch , n ;
     initialize(&s);
 
-    do{
-        printf("1. Push \n");
-        printf("2. Pop \n");
-        printf("3. Display \n");
-        printf("4. End \n");
+    printf("1. Push \n");
+    printf("2. Pop \n");
+    printf("3. Display \n");
+    printf("4. End \n");
 
+    do{
+        
+        printf("Enter Choice : ");
         scanf("%d" , &ch );
 
         switch(ch) {
@@ -57,7 +59,7 @@ void initialize(stack *S){
 void inserts( stack *S , int x ){
 
     if( S->top == MAXQ -1 ){
-        printf("stack is Full \n ");
+        printf("Stack is Full \n");
         return;
     }
     S->A[++S->top] = x ;
@@ -80,6 +82,7 @@ int deletes( stack *S ){
 
 void displays( stack S ){
 
+    printf("Top -> ");
     for( int i = S.top ; i >= 0 ; i--){
         printf("%d " , S.A[i] );
     }
