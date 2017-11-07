@@ -61,7 +61,7 @@ int merge(int a[] , int b[], int c[] , int lena , int lenb){
 
 #### Output : 
 
-![file.png]()
+![](file.png)
 
 
 

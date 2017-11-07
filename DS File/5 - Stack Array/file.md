@@ -8,19 +8,16 @@ Write a program to implement a **Stack Operations** using a Array as a Stack.
 #include <stdio.h>
 #define MAXQ 2
 typedef struct stack {
-
     int A[MAXQ] ;
     int top;
 } stack ;
 
-// Prototypes
 void inserts( stack* , int);
 int deletes( stack* );
 void displays( stack);
 void initialize( stack* );
 
 int main(){
-
     stack s ;
     int ch , n ;
     initialize(&s);
@@ -31,10 +28,8 @@ int main(){
     printf("4. End \n");
 
     do{
-        
         printf("Enter Choice : ");
         scanf("%d" , &ch );
-
         switch(ch) {
             case 1 :
             printf("Enter Value to Insert : ");
@@ -64,40 +59,33 @@ void inserts( stack *S , int x ){
         printf("Stack is Full \n");
         return;
     }
-    S->A[++S->top] = x ;
-        
+    S->A[++S->top] = x ; 
 }
 
 int deletes( stack *S ){
 
     int x ;
-
     if( S->top == -1 ){
         printf("Stack is Empty \n");
         return(-1);
     }
-
     x = S->A[S->top--] ;
     return(x);
 
 }
 
 void displays( stack S ){
-
     printf("Top -> ");
     for( int i = S.top ; i >= 0 ; i--){
         printf("%d " , S.A[i] );
     }
-
     printf("\n");
-   
-    
 }
 ```
 
 #### Output : 
 
-![file.png]()
+![](file.png)
 
 
 

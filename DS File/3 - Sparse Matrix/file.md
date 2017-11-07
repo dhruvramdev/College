@@ -161,7 +161,8 @@ void sparse_addition(sparse A[] , sparse B[] , sparse C[] ){
             i++ ;
             k++ ;
         }
-        else if ( ( A[i].row > B[j].row ) || ( A[i].row == B[j].row && A[i].col > B[j].col ) ){
+        else if ( ( A[i].row > B[j].row ) || ( A[i].row == B[j].row && 
+        A[i].col > B[j].col ) ){
             C[k].row = B[j].row ;
             C[k].col = B[j].col ;
             C[k].value = B[j].value ;
@@ -285,7 +286,7 @@ void sparse_multiplication(sparse A[] , sparse B[] , sparse C[]){
 
 #### Output : 
 
-![file.png]()
+![](./file.png)
 
 
 

@@ -6,12 +6,12 @@ class Person {
 
     protected :
     char name[50] ;
-    char age ;
+    int age ;
 
     public :
     Person( char* s , int a ) {
         strcpy( name,s );
-        age = a ;
+        age = a ; 
     }
 
     void display() {
@@ -35,7 +35,7 @@ class Student : public Person  {
 
     void display() {
         Person :: display() ;
-        cout << "Type :" << type << endl ;
+        cout << "Type : " << type << endl ;
         cout << "Institution : " << clg_name << endl ;
     }
 
@@ -52,7 +52,7 @@ class BTech : public Student {
 
     void display() {
         Student :: display () ;
-        cout << "Batch : " << endl ;
+        cout << "Batch : " << batch <<endl ;
     }
 };
 

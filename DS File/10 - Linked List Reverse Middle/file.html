@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   body,table tr{background-color:#fff}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}hr,pre code{background:0 0}body{font:16px Helvetica,Arial,sans-serif;line-height:1.4;color:#333;word-wrap:break-word;padding:10px 15px}strong,table tr th{font-weight:700}h1{font-size:2em;margin:.67em 0;text-align:center}h2{font-size:1.75em}h3{font-size:1.5em}h4{font-size:1.25em}h1,h2,h3,h4,h5,h6{font-weight:700;position:relative;margin-top:15px;margin-bottom:15px;line-height:1.1}h1,h2{border-bottom:1px solid #eee}hr{height:0;margin:15px 0;overflow:hidden;border:0;border-bottom:1px solid #ddd}a{color:#4183C4}a.absent{color:#c00}ol,ul{padding-left:15px;margin-left:5px}ol{list-style-type:lower-roman}table tr{border-top:1px solid #ccc;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}img{max-width:100%}blockquote{padding:0 15px;border-left:4px solid #ccc}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h4 id="objective">
+   Objective:
+  </h4>
+  <p>
+   To perform following operation on linked list :
+  </p>
+  <ul>
+   <li>
+    Reverse the Given Linked List
+   </li>
+   <li>
+    Find the Middle Element in Linked List
+   </li>
+  </ul>
+  <h4 id="code">
+   Code :
+  </h4>
+  <pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct node {
+    int value ;
+    struct node* next ;
+} node ;
+
+node* getnewnode() ;
+node* insertbeg( node* , int);
+void displayll( node* );
+node* reverse( node* );
+int middle( node* );
+
+int main(){
+
+    int ch , n , temp ;
+    node* start = NULL ;
+
+    printf("1. Insert Beginning \n");
+    printf("2. Display \n");
+    printf("3. Middle \n");
+    printf("4. Reverse \n");
+    printf("5. End \n");
+
+    do{
+        printf("Enter Choice : ");        
+        scanf("%d" , &amp;ch );
+
+        switch(ch) {
+            case 1 :
+                printf("Enter Value to Insert in Beginnng : ");
+                scanf("%d" , &amp;n);
+                start  = insertbeg(start , n);
+                break;
+            case 2 :
+                displayll(start);
+                break;
+            case 3 :
+                temp = middle(start);
+                printf("%d\n" , temp );
+            case 4 :
+                start = reverse(start);
+                break;
+        }
+
+    } while ( ch != 5) ;    
+
+}
+
+
+node* getnewnode(){
+
+    node* new = malloc(sizeof( node ) );
+    return new;
+
+}
+
+node* insertbeg( node* start  , int x){
+
+    node* q = getnewnode() ;
+    q-&gt;value = x ;
+
+    q-&gt;next = start ;
+    start = q ;
+
+    return start ;
+
+}
+
+void displayll(node* start){
+
+    while(start != NULL ){
+
+        printf("%d " , start-&gt;value);
+        start = start-&gt;next ;
+
+    }
+    printf("\n") ;
+
+}
+
+node* reverse(node* start){
+
+    node *q , *p ;
+
+    if(start == NULL || start-&gt;next == NULL ){
+        return start ;
+    }
+
+    p = start-&gt;next ;
+    start-&gt;next =NULL ;
+
+    while(p != NULL ){
+
+        q = p-&gt;next ;
+        p-&gt;next = start ;
+        start = p ;
+        p = q ;    
+    }
+    return start ;
+}
+
+
+int middle(node* start){
+    node *p , *q ;
+    p = start ;
+    q = start ;
+    while(p != NULL &amp;&amp; p-&gt;next != NULL ){
+        p = p-&gt;next-&gt;next ;
+        q = q-&gt;next ;
+    }
+
+    return q-&gt;value ;
+}
+</code></pre>
+  <h4 id="output">
+   Output :
+  </h4>
+  <p>
+   <img alt="" src="file.png"/>
+  </p>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>

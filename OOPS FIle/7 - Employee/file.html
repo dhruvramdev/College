@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   body,table tr{background-color:#fff}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}hr,pre code{background:0 0}body{font:16px Helvetica,Arial,sans-serif;line-height:1.4;color:#333;word-wrap:break-word;padding:10px 15px}strong,table tr th{font-weight:700}h1{font-size:2em;margin:.67em 0;text-align:center}h2{font-size:1.75em}h3{font-size:1.5em}h4{font-size:1.25em}h1,h2,h3,h4,h5,h6{font-weight:700;position:relative;margin-top:15px;margin-bottom:15px;line-height:1.1}h1,h2{border-bottom:1px solid #eee}hr{height:0;margin:15px 0;overflow:hidden;border:0;border-bottom:1px solid #ddd}a{color:#4183C4}a.absent{color:#c00}ol,ul{padding-left:15px;margin-left:5px}ol{list-style-type:lower-roman}table tr{border-top:1px solid #ccc;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}img{max-width:100%}blockquote{padding:0 15px;border-left:4px solid #ccc}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h4 id="aim">
+   Aim:
+  </h4>
+  <p>
+   To write a program to create a class
+   <code>
+    employee
+   </code>
+   with following specifications :
+  </p>
+  <ul>
+   <li>
+    <code>
+     calculate()
+    </code>
+    : A member function to net salary
+   </li>
+   <li>
+    <code>
+     havedata()
+    </code>
+    : A member function to accept values
+   </li>
+   <li>
+    <code>
+     displaydata()
+    </code>
+    : A member function to display all data members
+   </li>
+  </ul>
+  <h4 id="theory">
+   Theory:
+  </h4>
+  <p>
+   The building block of C++ that leads to Object Oriented programming is a
+   <code>
+    class
+   </code>
+   . It is a user defined data type, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class. A class is like a blueprint for an object. An object is an instance of a Class. When a class is defined, no memory is allocated but when it is instantiated (i.e. an object is created) memory is allocated. The public data members are also accessed in the same way given however the private data members are not allowed to be accessed directly by the object. Accessing a data member depends solely on the access control of that data member. This access control is given by Access modifiers in C++. There are three access modifiers : public, private and protected. The member functions defined inside the class are inline functions and declared outside are treated as normal functions.
+  </p>
+  <h4 id="syntax">
+   Syntax :
+  </h4>
+  <pre><code class="cpp">// Class Declaration
+class name{
+    private:
+    //data members and member functions
+    public:
+    //data members and member functions
+    protected:
+    //data members and member functions
+};
+
+// Object Declaration
+name object;
+</code></pre>
+  <h4 id="code">
+   Code :
+  </h4>
+  <pre><code class="cpp">#include &lt;iostream&gt; 
+// #include &lt;string&gt;
+
+using namespace::std;
+
+class Employee {
+    char name[50] ;
+    int empno ;
+    float basic ;
+    float hra ;
+    float da ;
+    float netpay ;
+
+    float calculate() {
+        return basic + da + hra ;        
+    }
+
+    public :
+
+    void havedata() {
+        cout &lt;&lt; "Enter Name : " ;
+        cin &gt;&gt; name ;
+        cout &lt;&lt; "Enter EmpNo : " ;
+        cin &gt;&gt; empno ;  
+        cout &lt;&lt; "Enter Basic Pay : " ;
+        cin &gt;&gt; basic ;     
+        cout &lt;&lt; "Enter HRA : " ;
+        cin &gt;&gt; hra ;       
+        cout &lt;&lt; "Enter DA : " ;
+        cin &gt;&gt; da ; 
+        netpay = calculate() ;
+    }
+
+    void displaydata() {
+        cout &lt;&lt; "Name : "  &lt;&lt; name &lt;&lt; endl ;
+        cout &lt;&lt; "EmpNo : "  &lt;&lt; empno &lt;&lt; endl ;
+        cout &lt;&lt; "Net Pay : "  &lt;&lt; netpay &lt;&lt; endl ;
+    }
+};
+
+
+int main () {
+    int n ;
+    cout &lt;&lt; "Enter Number of Employees : " ;
+    cin &gt;&gt; n ;
+
+    Employee emp[n] ;
+
+    int i = 0 ;
+    while(i &lt; n) {
+        cout &lt;&lt; "##### Employee " &lt;&lt; i+1 &lt;&lt; " ######" &lt;&lt; endl ;
+        emp[i].havedata() ;
+        emp[i++].displaydata() ;
+    }
+    return 0 ;
+}
+
+</code></pre>
+  <h4 id="output">
+   Output :
+  </h4>
+  <p>
+   <img alt="" src="./file.png"/>
+  </p>
+  <h4 id="discussion">
+   Discussion :
+  </h4>
+  <p>
+   In the above program we have created a class
+   <code>
+    Employee
+   </code>
+   in which number, name and salary are data member and there are two member function for input and output. Now in the
+   <code>
+    main
+   </code>
+   program we have created an array of objects which means we have created a number of objects with each object can be represented as an empty which stores the info of each employee and ask user to enter the info of each
+   <br/>
+   employee. Thus, displaying information of each employee as shown in output.
+  </p>
+  <h4 id="learning-outcomes">
+   Learning Outcomes :
+  </h4>
+  <p>
+   By studying classes, we learnt the following things: -
+  </p>
+  <ul>
+   <li>
+    <p>
+     Classes contain, data members and member functions, and the access of these data members and variable depends on the access specifiers .
+    </p>
+   </li>
+   <li>
+    <p>
+     Class member functions can be defined inside the class definition or outside the class definition.
+    </p>
+   </li>
+   <li>
+    Classes in C++ are similar to structures in C, the only difference being, class defaults to private access control, where as structure defaults to public.
+   </li>
+   <li>
+    All the features of OOPS, revolve around classes in C++.
+   </li>
+   <li>
+    Objects of class holds separate copies of data members. We can create as many objects of a class as we need.
+   </li>
+  </ul>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>

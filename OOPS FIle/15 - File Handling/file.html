@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   body,table tr{background-color:#fff}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}hr,pre code{background:0 0}body{font:16px Helvetica,Arial,sans-serif;line-height:1.4;color:#333;word-wrap:break-word;padding:10px 15px}strong,table tr th{font-weight:700}h1{font-size:2em;margin:.67em 0;text-align:center}h2{font-size:1.75em}h3{font-size:1.5em}h4{font-size:1.25em}h1,h2,h3,h4,h5,h6{font-weight:700;position:relative;margin-top:15px;margin-bottom:15px;line-height:1.1}h1,h2{border-bottom:1px solid #eee}hr{height:0;margin:15px 0;overflow:hidden;border:0;border-bottom:1px solid #ddd}a{color:#4183C4}a.absent{color:#c00}ol,ul{padding-left:15px;margin-left:5px}ol{list-style-type:lower-roman}table tr{border-top:1px solid #ccc;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}img{max-width:100%}blockquote{padding:0 15px;border-left:4px solid #ccc}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h4 id="aim">
+   Aim:
+  </h4>
+  <p>
+   Write a program to show file handling and count number of words , characters and sentences.
+  </p>
+  <h4 id="theory">
+   Theory:
+  </h4>
+  <p>
+   <strong>
+    File
+   </strong>
+   : The information / data stored under a specific name on a storage device, is called a file.
+  </p>
+  <p>
+   <strong>
+    Stream
+   </strong>
+   : It refers to a sequence of bytes.
+  </p>
+  <p>
+   <strong>
+    Text file
+   </strong>
+   : It is a file that stores information in ASCII characters. In text files, each line of text is terminated with a special character known as EOL (End of Line) character or delimiter character. When this EOL character is read or written, certain internal translations take place.
+  </p>
+  <p>
+   <strong>
+    Binary file
+   </strong>
+   : It is a file that contains information in the same format as it is held in memory. In binary files, no delimiters are used for a line and no translations occur here.
+  </p>
+  <p>
+   Classes for file stream operation :
+  </p>
+  <ul>
+   <li>
+    <strong>
+     ofstream
+    </strong>
+    : Stream class to write on files
+   </li>
+   <li>
+    <strong>
+     ifstream
+    </strong>
+    : Stream class to read from files
+   </li>
+   <li>
+    <strong>
+     fstream
+    </strong>
+    : Stream class to both read and write from/to files.
+   </li>
+  </ul>
+  <h4 id="syntax">
+   Syntax :
+  </h4>
+  <pre><code class="cpp">// OPENING FILE USING CONSTRUCTOR
+ofstream outFile("sample.txt");    //output only
+ifstream inFile("sample.txt");  //input only
+
+// OPENING FILE USING open()
+Stream-object.open(“filename”, mode)
+      ofstream outFile;
+      outFile.open("sample.txt");
+
+      ifstream inFile;
+      inFile.open(“sample.txt”);
+
+// ClOSING FILE
+   outFile.close();
+   inFile.close();
+</code></pre>
+  <h4 id="code">
+   Code :
+  </h4>
+  <pre><code class="cpp">#include&lt;iostream&gt;
+#include&lt;fstream&gt;
+using namespace std;
+int main(){
+    ifstream fin;
+    char filename[20];
+    cout&lt;&lt; "enter filename: ";
+    gets(filename);
+    fin.open(filename);
+    int line=0,word=0,chars=0;
+    char ch;
+    fin.seekg(0,ios::end);
+    fin.seekg(0,ios::beg);
+    while(fin){
+        fin.get(ch);
+        if(ch!=' ' &amp;&amp; ch!='\n') ++chars;
+        if(ch==' '|| ch=='\n') ++word;
+        if(ch=='\n')  ++line;
+
+    }
+    cout&lt;&lt; "Sentences= "&lt;&lt;line&lt;&lt; "\nWords= "&lt;&lt;word&lt;&lt; "\nCharacters= "&lt;&lt;chars&lt;&lt;endl;
+    fin.close(); // closing file
+    return 0;
+}
+</code></pre>
+  <h4 id="output">
+   Output :
+  </h4>
+  <p>
+   <img alt="" src="file.png"/>
+  </p>
+  <h4 id="discussion">
+   Discussion :
+  </h4>
+  <p>
+   The program opens a file named files.cpp and reads it till the end of the file is reached and during reading it counts the number of words, characters and sentences present in the file. Function
+   <code>
+    open()
+   </code>
+   is used to open a file and
+   <code>
+    close()
+   </code>
+   disconnects the file from the stream
+   <code>
+    object.seekg()
+   </code>
+   moves the get pointer (input) to a specified location.
+  </p>
+  <h4 id="learning-outcomes">
+   Learning Outcomes :
+  </h4>
+  <ul>
+   <li>
+    Here we learned the concept of file handling to read and write data in a file.
+   </li>
+   <li>
+    Files are a means to store data in a storage device.
+   </li>
+   <li>
+    C++ file handling provides a mechanism to store output of a program in a file and read from a file on the disk.
+   </li>
+   <li>
+    A file can be opened in different modes to perform read and write operations.
+   </li>
+  </ul>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>

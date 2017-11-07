@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   body,table tr{background-color:#fff}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}hr,pre code{background:0 0}body{font:16px Helvetica,Arial,sans-serif;line-height:1.4;color:#333;word-wrap:break-word;padding:10px 15px}strong,table tr th{font-weight:700}h1{font-size:2em;margin:.67em 0;text-align:center}h2{font-size:1.75em}h3{font-size:1.5em}h4{font-size:1.25em}h1,h2,h3,h4,h5,h6{font-weight:700;position:relative;margin-top:15px;margin-bottom:15px;line-height:1.1}h1,h2{border-bottom:1px solid #eee}hr{height:0;margin:15px 0;overflow:hidden;border:0;border-bottom:1px solid #ddd}a{color:#4183C4}a.absent{color:#c00}ol,ul{padding-left:15px;margin-left:5px}ol{list-style-type:lower-roman}table tr{border-top:1px solid #ccc;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}img{max-width:100%}blockquote{padding:0 15px;border-left:4px solid #ccc}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h4 id="aim">
+   Aim:
+  </h4>
+  <p>
+   Write a program to explain class template by creating a template for a class named
+   <code>
+    pair
+   </code>
+   having two data members of type T which are given by a constructor and a member function get_max() return the greatest of two numbers to main.
+  </p>
+  <h4 id="theory">
+   Theory:
+  </h4>
+  <p>
+   A template can be used to create a family of classes or functions. A template can be considered as a kind of macro. When an object of a specific type is defined for actual use, the template definition for that class is substituted with the required data type. Since a template is defined as a parameter that would be replaced by a specified data type at the time of actual use of the class or function, the templates are sometimes called parameterized classes or functions.
+  </p>
+  <h4 id="syntax">
+   Syntax :
+  </h4>
+  <pre><code class="cpp">template &lt;class T&gt;
+class classname{
+       //
+       // class member specifications
+       // with anonymous type T
+       // wherever appropriate
+       //
+}
+</code></pre>
+  <h4 id="code">
+   Code :
+  </h4>
+  <pre><code class="cpp">#include&lt;iostream&gt;
+using namespace std;
+
+template&lt;typename T&gt;
+class Pair{
+    T a;
+    T b;
+public:
+    Pair(T x,T y=0){
+        a=x;
+        b=y;
+    }
+
+    T get_max(){
+        return a&gt;b?a:b;
+    }
+};
+int main(){
+
+    Pair &lt;int&gt; p1 (10,13);
+    cout&lt;&lt; "Max Num is : "&lt;&lt; p1.get_max()&lt;&lt; endl;
+    Pair &lt;float&gt; p2 (12.1,11.9);
+    cout&lt;&lt; "Max Num is : " &lt;&lt;p2.get_max()&lt;&lt;endl;
+
+
+    return 0;
+}
+</code></pre>
+  <h4 id="output">
+   Output :
+  </h4>
+  <p>
+   <img alt="" src="file.png"/>
+  </p>
+  <h4 id="discussion">
+   Discussion :
+  </h4>
+  <p>
+   The class template definition is very similar to an ordinary class definition except the prefix template
+   <code>
+    &lt;class T&gt;
+   </code>
+   and the use of type T. This prefix tells the compiler that we are going to declare a template and use T as a type name in the declaration.
+  </p>
+  <h4 id="learning-outcomes">
+   Learning Outcomes :
+  </h4>
+  <p>
+   Templates are a very powerful mechanism which can simplify many things. Its advantages are:
+  </p>
+  <ul>
+   <li>
+    Reducing the repetition of code (generic containers, algorithms.
+   </li>
+   <li>
+    Static polymorphism and other compile time calculations
+   </li>
+   <li>
+    Policy based design (flexibility, reusability, easier changes, etc.)
+   </li>
+   <li>
+    Templates reduce the effort on coding for different data types to a single set of code.
+   </li>
+  </ul>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>

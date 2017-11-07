@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   body,table tr{background-color:#fff}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}hr,pre code{background:0 0}body{font:16px Helvetica,Arial,sans-serif;line-height:1.4;color:#333;word-wrap:break-word;padding:10px 15px}strong,table tr th{font-weight:700}h1{font-size:2em;margin:.67em 0;text-align:center}h2{font-size:1.75em}h3{font-size:1.5em}h4{font-size:1.25em}h1,h2,h3,h4,h5,h6{font-weight:700;position:relative;margin-top:15px;margin-bottom:15px;line-height:1.1}h1,h2{border-bottom:1px solid #eee}hr{height:0;margin:15px 0;overflow:hidden;border:0;border-bottom:1px solid #ddd}a{color:#4183C4}a.absent{color:#c00}ol,ul{padding-left:15px;margin-left:5px}ol{list-style-type:lower-roman}table tr{border-top:1px solid #ccc;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}img{max-width:100%}blockquote{padding:0 15px;border-left:4px solid #ccc}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h4 id="aim">
+   Aim:
+  </h4>
+  <p>
+   To understand the concept of Virtual Function (polymorphism) by creating a base class
+   <code>
+    c_polygon
+   </code>
+   which has virtual function area and two derived classes
+   <code>
+    c_rectangle
+   </code>
+   and
+   <code>
+    c_triangle
+   </code>
+   . Calculate and return area for rectangle and triangle respectively.
+  </p>
+  <h4 id="theory">
+   Theory:
+  </h4>
+  <p>
+   A virtual function a member function which is declared within base class and is re-defined (Overridden) by derived class. When you refer to a derived class object using a pointer or a reference to the base
+   <br/>
+   class, you can call a virtual function for that object and execute the derived class’s version of the function. Some of the rules to define a virtual function are:-
+  </p>
+  <ol>
+   <li>
+    They Must be declared in public section of class.
+   </li>
+   <li>
+    Virtual functions cannot be static and also cannot be a friend function of another class.
+   </li>
+   <li>
+    Virtual functions should be accessed using pointer or reference of base class type to achieve run time polymorphism.
+   </li>
+   <li>
+    The prototype of virtual functions should be same in base as well as derived class.
+   </li>
+   <li>
+    They are always defined in base class and overridden in derived class. It is not mandatory for derived class to override (or re-define the virtual function), in that case base class version of function is
+    <br/>
+    used.
+   </li>
+   <li>
+    A class may have virtual destructor but it cannot have a virtual constructor.
+   </li>
+  </ol>
+  <h4 id="syntax">
+   Syntax :
+  </h4>
+  <pre><code class="cpp">class Base {
+    public:
+        // virtual function definition with keyword virtual
+};
+class Derived: public A {
+    // polymorphism using function overloading
+};
+</code></pre>
+  <h4 id="code">
+   Code :
+  </h4>
+  <pre><code class="cpp">
+#include &lt;iostream&gt;
+using namespace std;
+
+class c_polygon{
+    protected :
+    float width, height;
+    public :
+    c_polygon() { }
+    void setParams(float a, float b) {
+        width = a;
+        height = b;
+    }
+    virtual void getArea() {
+        cout &lt;&lt; "No shape selected" &lt;&lt; endl;
+    }   
+};
+
+class c_rectangle : public c_polygon {
+    public :
+    c_rectangle() { }
+    void getArea() {
+        float area = width * height;
+        cout &lt;&lt; "\nLength : " &lt;&lt; height &lt;&lt; "  Breadth : " &lt;&lt; width;
+        cout &lt;&lt; "\nArea of Rectangle : " &lt;&lt; area &lt;&lt; endl;
+    }
+};
+
+class c_triangle : public c_polygon {
+    public :
+    c_triangle() { }
+    void getArea() {
+        float area = 0.5 * width * height;
+        cout &lt;&lt; "\nBase : " &lt;&lt; width &lt;&lt; "  Height : " &lt;&lt; height;
+        cout &lt;&lt; "\nArea of Triangle : " &lt;&lt; area &lt;&lt; endl;
+    }
+};
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    c_polygon *ptr;
+    c_rectangle rect;
+    c_triangle tr;
+    ptr = &amp;rect;
+    ptr-&gt;setParams(5,7);
+    ptr-&gt;getArea();
+    ptr = &amp;tr;
+    ptr-&gt;setParams(3,4);
+    ptr-&gt;getArea();
+    return 0;
+}
+</code></pre>
+  <h4 id="output">
+   Output :
+  </h4>
+  <p>
+   <img alt="" src="file.png"/>
+  </p>
+  <h4 id="discussion">
+   Discussion :
+  </h4>
+  <p>
+   The above program illustrates the concept of virtual functions. In this program, a polygon class is made which has height and width as data members, a virtual function
+   <code>
+    getArea()
+   </code>
+   and function
+   <code>
+    setParams()
+   </code>
+   to accept parameters from user. Class
+   <code>
+    c_polygon
+   </code>
+   has two derived classes
+   <code>
+    c_triangle
+   </code>
+   and
+   <code>
+    c_rectangle
+   </code>
+   . Both derived classes have function
+   <code>
+    getArea()
+   </code>
+   to calculate area and display. Thus virtual function polymorphism is demonstrated by the three classes.
+  </p>
+  <h4 id="learning-outcomes">
+   Learning Outcomes :
+  </h4>
+  <ul>
+   <li>
+    Virtual functions ensure that the correct function is called for an object, regardless of the type of reference (or pointer) used for function call.
+   </li>
+   <li>
+    They are mainly used to achieve Runtime polymorphism.
+   </li>
+   <li>
+    Functions are declared with a virtual keyword in base class.
+   </li>
+   <li>
+    The resolving of function call is done at run-time.
+   </li>
+  </ul>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>

@@ -88,7 +88,7 @@ int main(){
 ```
 
 #### Output : 
-![file.png]()
+![](./file.png)
 
 #### Discussion :
 

@@ -8,9 +8,8 @@ To write a program to create a class `employee` with following specifications :
 
 #### Theory:
 
-The building block of C++ that leads to Object Oriented programming is a `class`. It is a user defined data type, which holds its own data members and member functions, which can be accessed and used by
-creating an instance of that class. A class is like a blueprint for an object. 
-An Object is an instance of a Class. When a class is defined, no memory is allocated but when it is instantiated (i.e. an object is created) memory is allocated.
+The building block of C++ that leads to Object Oriented programming is a `class`. It is a user defined data type, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class. A class is like a blueprint for an object. An object is an instance of a Class. When a class is defined, no memory is allocated but when it is instantiated (i.e. an object is created) memory is allocated. The public data members are also accessed in the same way given however the private data members are not allowed to be accessed directly by the object. Accessing a data member depends solely on the access control of that data member. This access control is given by Access modifiers in C++. There are three access modifiers : public, private and protected. The member functions defined inside the class are inline functions and declared outside are treated as normal functions.
+
 
 #### Syntax :
 
@@ -92,7 +91,7 @@ int main () {
 ```
 
 #### Output : 
-![./file.png]()
+![](./file.png)
 
 
 

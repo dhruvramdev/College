@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   body,table tr{background-color:#fff}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}hr,pre code{background:0 0}body{font:16px Helvetica,Arial,sans-serif;line-height:1.4;color:#333;word-wrap:break-word;padding:10px 15px}strong,table tr th{font-weight:700}h1{font-size:2em;margin:.67em 0;text-align:center}h2{font-size:1.75em}h3{font-size:1.5em}h4{font-size:1.25em}h1,h2,h3,h4,h5,h6{font-weight:700;position:relative;margin-top:15px;margin-bottom:15px;line-height:1.1}h1,h2{border-bottom:1px solid #eee}hr{height:0;margin:15px 0;overflow:hidden;border:0;border-bottom:1px solid #ddd}a{color:#4183C4}a.absent{color:#c00}ol,ul{padding-left:15px;margin-left:5px}ol{list-style-type:lower-roman}table tr{border-top:1px solid #ccc;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}img{max-width:100%}blockquote{padding:0 15px;border-left:4px solid #ccc}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h4 id="aim">
+   Aim:
+  </h4>
+  <p>
+   To write a program to demonstrate Exception Handling in C++ by :
+  </p>
+  <ul>
+   <li>
+    Division by zero.
+   </li>
+   <li>
+    Array index out of bounds exception using multiple catch blocks.
+   </li>
+  </ul>
+  <h4 id="theory">
+   Theory:
+  </h4>
+  <p>
+   An exception is a problem that arises during the execution of a program. A C++ exception is a response to an exceptional circumstance that arises while a program is running, such as an attempt to divide by zero.
+  </p>
+  <p>
+   Exceptions provide a way to transfer control from one part of a program to another. C++ exception handling is built upon three keywords: try, catch, and throw.
+  </p>
+  <ul>
+   <li>
+    <strong>
+     throw
+    </strong>
+    − A program throws an exception when a problem shows up. This is done using a throw keyword.
+   </li>
+   <li>
+    <strong>
+     catch
+    </strong>
+    − A program catches an exception with an exception handler at the place in a program where you want to handle the problem. The catch keyword indicates the catching of an exception.
+   </li>
+   <li>
+    <strong>
+     try
+    </strong>
+    − A try block identifies a block of code for which particular exceptions will be activated. It’s followed by one or more catch blocks.
+   </li>
+  </ul>
+  <h4 id="syntax">
+   Syntax :
+  </h4>
+  <pre><code class="cpp">try {
+   // protected code
+} catch( ExceptionName e1 ) {
+   // catch block
+} catch( ExceptionName e2 ) {
+   // catch block
+} catch( ExceptionName eN ) {
+   // catch block
+}
+</code></pre>
+  <h4 id="code">
+   Code :
+  </h4>
+  <h5 id="part-1">
+   Part 1
+  </h5>
+  <pre><code class="cpp">#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{   int a,b,c;
+    bool done = false;
+
+    do
+    {   cout &lt;&lt; "Enter first number" &lt;&lt; endl;
+        cin &gt;&gt; a;
+
+        cout &lt;&lt; "Enter second number" &lt;&lt; endl;
+        cin &gt;&gt; b;
+
+        try
+        {   if (b == 0)
+            throw "error";
+            c = a/b;
+            cout &lt;&lt;"Answer is : "&lt;&lt; c &lt;&lt; endl;
+            done = true;
+        }
+        catch(...)
+        {   cout &lt;&lt; "Maybe you tried to divide by zero"&lt;&lt;endl;
+        }
+    }
+    while (! done);
+    return 0;
+}
+
+</code></pre>
+  <h5 id="part-2">
+   Part 2
+  </h5>
+  <pre><code class="cpp">#include &lt;iostream&gt;
+using namespace std;
+int main () {
+    try
+    {
+        char * mystring;
+        mystring = new char [10];
+        if (mystring == NULL) throw "Allocation failure";
+        for (int n=0; n&lt;=100; n++)    {
+            if (n&gt;9) throw n;
+            mystring[n]='z';
+        }
+    }
+    catch (int i)
+    {cout &lt;&lt; "Exception: ";
+        cout &lt;&lt; "index " &lt;&lt; i &lt;&lt; " is out of range" &lt;&lt; endl;  }
+
+    catch (char * str)
+    { cout &lt;&lt; "Exception: " &lt;&lt; str &lt;&lt; endl;   }
+    return 0;
+}
+</code></pre>
+  <h4 id="output">
+   Output :
+  </h4>
+  <p>
+   <img alt="" src="file1.png"/>
+  </p>
+  <p>
+   <img alt="" src="file2.png"/>
+  </p>
+  <h4 id="discussion">
+   Discussion :
+  </h4>
+  <p>
+   When the try block throws an exception, the program control leaves the try block and enters the catch statement of the catch block. Note that exceptions are objects used to transmit information about a problem. If the type of object thrown matches the argument type in the catch statement, then catch block is executed for handling the exception. If they do not match, the program is aborted with the help of
+   <code>
+    abort()
+   </code>
+   function which is invoked by default. When no exception is detected and thrown, the control goes to the statement immediately after the catch block.
+  </p>
+  <h4 id="learning-outcomes">
+   Learning Outcomes :
+  </h4>
+  <ul>
+   <li>
+    C++ exception handling mechanism is basically build upon three keywords namely. Try, throw, catch.
+   </li>
+   <li>
+    The keyword try is used to preface a block of statements which may generate exceptions. This block of statements is known as try block.
+   </li>
+   <li>
+    When an exception is detected, it is thrown using a throw statement in the try block.
+   </li>
+   <li>
+    A catch block defined by the keyword catch, catches the exception thrown by the throw statement in the try block, it handles is appropriately.
+   </li>
+  </ul>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>
